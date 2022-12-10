@@ -1,0 +1,27 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Вопросы для собеса</title>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <title>Подготовка к собесу</title>
+    </head>
+    <body>
+      <div class="header">
+        <ui class="header-list">
+            <li><a href="{% url 'home' %}">Главная</a></li>
+        </ui>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+        <div class="footer">
+            <p>copyright - 2022</p>
+        </div>
+    </body>
+</html>

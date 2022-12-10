@@ -1,0 +1,13 @@
+{% extends 'lesson/base.html' %}
+
+    {% block content %}
+
+        <div class="main">
+
+            {% for cat in categories %}
+                <a href="quest/{{cat.id}}">{{cat}}</a>
+            {% endfor %}
+
+        </div>
+
+    {% endblock %}

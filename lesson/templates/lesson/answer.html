@@ -1,0 +1,12 @@
+{% extends 'lesson/base.html' %}
+
+    {% block content %}
+
+        <div class="main">
+            <h3>{{answer}}</h3>
+            <p>{{answer.answer}}</p>
+            <img src="/media/{{answer.image}}"><a href="/media/{{answer.image}}"></a>
+
+        </div>
+
+    {% endblock %}

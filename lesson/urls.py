@@ -12,5 +12,6 @@ router.register(r'quest', QuestionViewSet)
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path("", include(router.urls))
+    path('', include(router.urls)),
+    path('lesson/<int:pk>/', views.NewsDetailView.as_view(), name='detail')
 ]

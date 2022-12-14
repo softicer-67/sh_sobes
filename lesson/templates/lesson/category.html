@@ -9,14 +9,15 @@
     {% endblock %}
 
     {% block content %}
-    <h3>{{cats.title}}</h3>
 
         <div class="main">
 
-            {% if answer.image %}
-                <p><img class="img-article-left" src="{{answer.image.url}}"></p>
-            {% endif %}
+            {% for cat in category %}
+                <a href="{{pk}}/{{cat.slug}}">{{cat}}</a>
+            {% endfor %}
 
         </div>
 
     {% endblock %}
+
+

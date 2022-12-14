@@ -1,22 +1,31 @@
 from django.shortcuts import render
 from rest_framework import mixins
+from rest_framework.generics import get_object_or_404
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from lesson.serializers import QuestionSerializer, CategorySerializer
 from .models import Question, Category
 
 
 def index(request):
-    return render(request, 'lesson/index.html', {'cats': Category.objects.all()})
+    cats = Category.objects.all()
+    context = {
+        'cats': cats,
+    }
+    return render(request, 'lesson/index.html', context=context)
 
 
-def answer(request, pk):
+def show_category(request, pk):
     w = Category.objects.get(pk=pk)
-    x = w.question_set.all()
-    return render(request, 'lesson/answer.html', {'questions': x})
+    c = w.question_set.all()
+    return render(request, 'lesson/category.html', {'category': c})
 
 
-def page_not_found(request, exeption):
-    return render(request, '<h2>Страница не найдена</h2?')
+def answer(request, question_slug):
+    ans = get_object_or_404(Question, slug=question_slug)
+    context = {
+        'answer': ans
+    }
+    return render(request, 'lesson/answer.html', context=context)
 
 
 class QuestionViewSet(ModelViewSet):

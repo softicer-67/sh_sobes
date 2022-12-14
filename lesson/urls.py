@@ -10,7 +10,7 @@ router.register(r'quest', QuestionViewSet)
 
 
 urlpatterns = [
-    # path('', index, name='home'),
+    path('', index, name='home'),
     path('<int:pk>/', answer, name='answer'),
     path('', include(router.urls))
 ]

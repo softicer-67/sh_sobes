@@ -9,8 +9,8 @@ def index(request):
     return render(request, 'lesson/index.html', {'cats': Category.objects.all()})
 
 
-def answer(request, cat_id):
-    w = Category.objects.get(pk=cat_id)
+def answer(request, pk):
+    w = Category.objects.get(pk=pk)
     x = w.question_set.all()
     return render(request, 'lesson/answer.html', {'questions': x})
 

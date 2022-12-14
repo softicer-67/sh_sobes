@@ -3,21 +3,20 @@ from rest_framework import mixins
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from lesson.serializers import QuestionSerializer, CategorySerializer
 from .models import Question, Category
-from django.views.generic import DetailView
 
 
 def index(request):
-    data = {
-        'categories': Category.objects.all(),
-        'questions': Question.objects.all()
-    }
-    return render(request, 'lesson/index.html', data)
+    return render(request, 'lesson/index.html', {'cats': Category.objects.all()})
 
 
-class NewsDetailView(DetailView):
-    model = Question
-    template_name = 'lesson/answer.html'
-    context_object_name = 'answer'
+def answer(request, cat_id):
+    w = Category.objects.get(pk=cat_id)
+    x = w.question_set.all()
+    return render(request, 'lesson/answer.html', {'questions': x})
+
+
+def page_not_found(request, exeption):
+    return render(request, '<h2>Страница не найдена</h2?')
 
 
 class QuestionViewSet(ModelViewSet):

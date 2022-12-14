@@ -1,7 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-
-from lesson import views
+from lesson.views import index, answer
 from lesson.views import CategoryViewSet, QuestionViewSet
 
 
@@ -11,7 +10,7 @@ router.register(r'quest', QuestionViewSet)
 
 
 urlpatterns = [
-    path('', views.index, name='home'),
-    path('', include(router.urls)),
-    path('lesson/<int:pk>/', views.NewsDetailView.as_view(), name='detail')
+    path('', index, name='home'),
+    path('<cat_id>/', answer, name='answer'),
+    path('', include(router.urls))
 ]

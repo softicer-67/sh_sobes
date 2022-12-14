@@ -3,9 +3,13 @@
     {% block content %}
 
         <div class="main">
-            <h3>{{answer}}</h3>
-            <p>{{answer.answer}}</p>
-            <img src="/media/{{answer.image}}"><a href="/media/{{answer.image}}"></a>
+
+            {% for quest in questions %}
+                <h3>{{quest}}</h3>
+                <img src="/media/{{quest.image}}"><a href="/media/{{quest.image}}"></a>
+            {% endfor %}
+
+
 
         </div>
 
